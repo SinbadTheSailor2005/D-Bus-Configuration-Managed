@@ -1,0 +1,18 @@
+# ninja log v6
+2	59	1746013305939583254	CMakeFiles/D_bus.dir/main.cpp.o.ddi	ac50e4bbb19359e5
+0	94	1746014034164371650	build.ninja	bdc26973df919a7d
+9	3223	1746012650394737678	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/Proxy.cpp.o	3fb5eaee397739ca
+356	405	1746013306293602073	D_bus	5b988ca857a04e03
+6	2700	1746012650391737519	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/Object.cpp.o	69d0fe14e5662e4b
+866	1577	1746012651251972764	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/SdBus.cpp.o	ff30129b9916995b
+59	61	1746013305996636728	CMakeFiles/D_bus.dir/main.cpp.o.modmap	6dbfdf120e19bce9
+5	1819	1746012650390737465	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/Message.cpp.o	282414fec81bb1ff
+833	866	1746012651218781476	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/VTableUtils.c.o	6ff4e76a301622fe
+535	833	1746012650920765636	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/Flags.cpp.o	9d8acbf4e072d1ac
+62	356	1746013305999669127	CMakeFiles/D_bus.dir/main.cpp.o	4f5693116f8b51e7
+59	61	1746013305996636728	/home/aziz/Projects/D-bus/cmake-build-debug/CMakeFiles/D_bus.dir/CXXModules.json	6dbfdf120e19bce9
+165	1309	1746012650550745970	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/Types.cpp.o	9dc109ddcf1f98fd
+59	61	1746013305996636728	CMakeFiles/D_bus.dir/CXX.dd	6dbfdf120e19bce9
+3	535	1746012650389554612	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/Error.cpp.o	bd259c1637a8bbed
+3	2836	1746012650388737359	_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/src/Connection.cpp.o	beaeb1018d7e987a
+3223	3277	1746012653608908512	_deps/sdbus-cpp-build/libsdbus-c++.a	cf5c88dbea9f8969

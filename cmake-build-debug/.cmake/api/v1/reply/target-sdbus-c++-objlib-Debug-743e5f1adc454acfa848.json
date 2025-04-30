@@ -1,0 +1,425 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/Connection.cpp.o"
+		},
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/Error.cpp.o"
+		},
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/Message.cpp.o"
+		},
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/Object.cpp.o"
+		},
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/Proxy.cpp.o"
+		},
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/Types.cpp.o"
+		},
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/Flags.cpp.o"
+		},
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/VTableUtils.c.o"
+		},
+		{
+			"path" : "_deps/sdbus-cpp-build/CMakeFiles/sdbus-c++-objlib.dir/./src/SdBus.cpp.o"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"cmake-build-debug/_deps/sdbus-cpp-src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 199,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 200,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 205,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -std=gnu++20 -fdiagnostics-color=always"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "BUILD_LIB=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "LIBSYSTEMD_VERSION=257"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "SDBUS_HEADER=<systemd/sd-bus.h>"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "SDBUS_systemd"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/src"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				8
+			]
+		},
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -fdiagnostics-color=always"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "BUILD_LIB=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "LIBSYSTEMD_VERSION=257"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "SDBUS_HEADER=<systemd/sd-bus.h>"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "SDBUS_systemd"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/src"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				7
+			]
+		}
+	],
+	"id" : "sdbus-c++-objlib::@6bd9f0b8c538a5853df2",
+	"name" : "sdbus-c++-objlib",
+	"paths" : 
+	{
+		"build" : "_deps/sdbus-cpp-build",
+		"source" : "cmake-build-debug/_deps/sdbus-cpp-src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31,
+				32,
+				33,
+				34,
+				35
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Connection.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Error.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Message.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Object.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Proxy.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Types.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Flags.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/VTableUtils.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/SdBus.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Connection.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/IConnection.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/MessageUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Utils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Object.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/Proxy.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/ScopeGuard.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/VTableUtils.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/SdBus.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/src/ISdBus.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/ConvenienceApiClasses.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/ConvenienceApiClasses.inl",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/VTableItems.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/VTableItems.inl",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/Error.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/IConnection.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/AdaptorInterfaces.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/ProxyInterfaces.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/StandardInterfaces.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/IObject.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/IProxy.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/Message.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/MethodResult.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/Types.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/TypeTraits.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/Flags.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/sdbus-c++.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

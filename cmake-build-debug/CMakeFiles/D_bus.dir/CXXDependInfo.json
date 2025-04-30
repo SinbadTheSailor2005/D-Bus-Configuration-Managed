@@ -1,0 +1,35 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "/home/aziz/Projects/D-bus/cmake-build-debug",
+	"dir-cur-src" : "/home/aziz/Projects/D-bus",
+	"dir-top-bld" : "/home/aziz/Projects/D-bus/cmake-build-debug",
+	"dir-top-src" : "/home/aziz/Projects/D-bus",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"_deps/sdbus-cpp-src/include"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/aziz/Projects/D-bus/cmake-build-debug/CMakeFiles/D_bus.dir",
+	"sources" : 
+	{
+		"CMakeFiles/D_bus.dir/main.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/aziz/Projects/D-bus/main.cpp"
+		},
+		"CMakeFiles/D_bus.dir/test.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/home/aziz/Projects/D-bus/test.cpp"
+		}
+	}
+}
