@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/service.dir/src/service.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

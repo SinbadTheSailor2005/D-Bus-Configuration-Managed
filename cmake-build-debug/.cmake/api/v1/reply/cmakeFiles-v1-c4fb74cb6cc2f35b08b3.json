@@ -272,6 +272,76 @@
 			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/stepscript.cmake.in"
 		},
 		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindGit.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/gitclone.cmake.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/RepositoryInfo.txt.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/stepscript.cmake.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindGit.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/gitupdate.cmake.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/UpdateInfo.txt.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/stepscript.cmake.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/PatchInfo.txt.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/stepscript.cmake.in"
+		},
+		{
 			"isGenerated" : true,
 			"path" : "cmake-build-debug/_deps/sdbus-cpp-src/CMakeLists.txt"
 		},
@@ -389,6 +459,47 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/_deps/json-src/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/ExternalProject/shared_internal_commands.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/GNUInstallDirs.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/_deps/json-src/cmake/pkg-config.pc.in"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/aziz/apps/clion-2025.1/bin/cmake/linux/x64/share/cmake-3.31/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/_deps/json-src/cmake/nlohmann_jsonConfigVersion.cmake.in"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/_deps/json-src/cmake/config.cmake.in"
 		}
 	],
 	"kind" : "cmakeFiles",

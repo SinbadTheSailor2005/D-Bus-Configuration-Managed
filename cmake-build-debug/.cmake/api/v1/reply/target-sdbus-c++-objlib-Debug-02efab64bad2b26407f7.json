@@ -36,11 +36,13 @@
 		[
 			"add_library",
 			"target_compile_definitions",
+			"include_directories",
 			"target_include_directories"
 		],
 		"files" : 
 		[
-			"cmake-build-debug/_deps/sdbus-cpp-src/CMakeLists.txt"
+			"cmake-build-debug/_deps/sdbus-cpp-src/CMakeLists.txt",
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -60,7 +62,16 @@
 				"parent" : 0
 			},
 			{
+				"file" : 1
+			},
+			{
 				"command" : 2,
+				"file" : 1,
+				"line" : 5,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
 				"file" : 0,
 				"line" : 205,
 				"parent" : 0
@@ -98,11 +109,19 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
+					"path" : "/home/aziz/Projects/D-bus/src"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/aziz/Projects/D-bus/include"
+				},
+				{
+					"backtrace" : 5,
 					"path" : "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/include"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 5,
 					"path" : "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/src"
 				}
 			],
@@ -156,11 +175,19 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
+					"path" : "/home/aziz/Projects/D-bus/src"
+				},
+				{
+					"backtrace" : 4,
+					"path" : "/home/aziz/Projects/D-bus/include"
+				},
+				{
+					"backtrace" : 5,
 					"path" : "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/include"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 5,
 					"path" : "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/src"
 				}
 			],

@@ -1,0 +1,5 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/service.dir/src/start_service.cpp.o: dyndep
+
+build CMakeFiles/service.dir/src/service.cpp.o: dyndep
+

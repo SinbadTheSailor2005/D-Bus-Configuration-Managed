@@ -14,24 +14,25 @@
 	"forward-modules-from-target-dirs" : [],
 	"include-dirs" : 
 	[
-		"/home/aziz/Projects/D-bus/src,",
+		"/home/aziz/Projects/D-bus/src",
 		"/home/aziz/Projects/D-bus/include",
+		"_deps/json-src/single_include",
 		"_deps/sdbus-cpp-src/include"
 	],
 	"language" : "CXX",
 	"linked-target-dirs" : [],
-	"module-dir" : "/home/aziz/Projects/D-bus/cmake-build-debug/CMakeFiles/D_bus.dir",
+	"module-dir" : "/home/aziz/Projects/D-bus/cmake-build-debug/CMakeFiles/service.dir",
 	"sources" : 
 	{
-		"CMakeFiles/D_bus.dir/src/main.cpp.o" : 
+		"CMakeFiles/service.dir/src/service.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/home/aziz/Projects/D-bus/src/main.cpp"
+			"source" : "/home/aziz/Projects/D-bus/src/service.cpp"
 		},
-		"CMakeFiles/D_bus.dir/src/test.cpp.o" : 
+		"CMakeFiles/service.dir/src/start_service.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/home/aziz/Projects/D-bus/src/test.cpp"
+			"source" : "/home/aziz/Projects/D-bus/src/start_service.cpp"
 		}
 	}
 }

@@ -14,11 +14,13 @@
 			"add_library",
 			"install",
 			"target_link_libraries",
+			"include_directories",
 			"target_include_directories"
 		],
 		"files" : 
 		[
-			"cmake-build-debug/_deps/sdbus-cpp-src/CMakeLists.txt"
+			"cmake-build-debug/_deps/sdbus-cpp-src/CMakeLists.txt",
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -44,7 +46,16 @@
 				"parent" : 0
 			},
 			{
+				"file" : 1
+			},
+			{
 				"command" : 3,
+				"file" : 1,
+				"line" : 5,
+				"parent" : 4
+			},
+			{
+				"command" : 4,
 				"file" : 0,
 				"line" : 219,
 				"parent" : 0
