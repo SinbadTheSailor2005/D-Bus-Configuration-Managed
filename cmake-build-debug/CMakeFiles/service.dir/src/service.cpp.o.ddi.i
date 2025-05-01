@@ -127483,9 +127483,13 @@ namespace std __attribute__ ((__visibility__ ("default")))
 # 10 "/home/aziz/Projects/D-bus/src/service.cpp" 2
 
 
-# 11 "/home/aziz/Projects/D-bus/src/service.cpp"
-void create_objects(const std::unique_ptr<sdbus::IConnection>& connection)
+
+# 12 "/home/aziz/Projects/D-bus/src/service.cpp"
+std::vector<std::unique_ptr<sdbus::IObject>> create_objects(std::unique_ptr<sdbus::IConnection>& connection)
 {
+
+    std::vector<std::unique_ptr<sdbus::IObject>>objects;
+
 
     const std::filesystem::path dir_path = std::getenv("HOME")
         + std::string("/com.system.configurationManager");
@@ -127495,109 +127499,123 @@ void create_objects(const std::unique_ptr<sdbus::IConnection>& connection)
     {
         throw std::runtime_error("No such file or directory");
     }
-    else
+    std::cout << "determine path: " << dir_path.string() << '\n';
+
+
+
+    for (const auto& entry : std::filesystem::directory_iterator(dir_path))
     {
-
-        for (const auto& entry : std::filesystem::directory_iterator(dir_path))
+        if (entry.is_regular_file())
         {
-            if (entry.is_regular_file())
+
+            std::string file_path = entry.path().string();
+            std::string filename = entry.path().filename().string();
+            std::cout << "examine file: " << filename << '\n';
+
+
+            sdbus::ObjectPath object_path
+                {"/com/system/configurationManager/Application/" + filename};
+
+            auto object = sdbus::createObject(
+                *connection, std::move(object_path));
+
+            auto raw_pointer_to_object = object.get();
+
+            auto ChangeConfiguration = [raw_pointer_to_object, file_path](
+                std::string key, sdbus::Variant value)
             {
-
-                std::string file_path = entry.path().string();
-                std::string filename = entry.path().filename().string();
-
-
-                sdbus::ObjectPath object_path
-                    {"/com/system/configurationManager/Application/" + filename};
-
-                auto object = sdbus::createObject(
-                    *connection, std::move(object_path));
-
-                auto ChangeConfiguration = [& object, file_path](
-                    std::string key, sdbus::Variant value)
+                std::unordered_map<std::string, sdbus::Variant> parameters;
+                std::ifstream config(file_path);
+                if (!config.is_open())
                 {
-                    std::unordered_map<std::string, sdbus::Variant> parameters;
-                    std::ifstream config(file_path);
-                    if (!config.is_open())
-                    {
-                        throw std::runtime_error("Could not open the file");
-                    }
+                    throw std::runtime_error("Could not open the file");
+                }
 
 
 
-                    std::string conf_key, conf_value;
-                    bool isUpdated = false;
+                std::string conf_key, conf_value;
+                bool isUpdated = false;
 
-                    while (config >> conf_key >> conf_value)
-                    {
-
-                        if (conf_key == key)
-                        {
-
-
-                            parameters[conf_value] = value;
-                            isUpdated = true;
-                            continue;
-                        }
-
-
-
-
-                        parameters[conf_key] = sdbus::Variant(conf_value);
-                    }
-
-                    if (!isUpdated)
-                        throw sdbus::Error(sdbus::Error::Name{
-                                               "org.freedesktop.DBus.Error.InvalidArgs"
-                                           },
-                                           "No such parameter in configuration");
-                    config.close();
-
-                    std::ofstream upd_config(file_path);
-                    for (const auto& [key,value] : parameters)
-                    {
-
-                        upd_config << key << " " << value.get<std::string>() <<
-                            "\n";
-                    }
-                    upd_config.close();
-
-
-                    object->emitSignal("configurationChanged")
-                          .onInterface(
-                              "com.system.configurationManager.Application.Configuration")
-                          .withArguments(parameters);
-                };
-
-
-                auto GetConfiguration = [&object, file_path]()->std::unordered_map<std::string, sdbus::Variant>
+                while (config >> conf_key >> conf_value)
                 {
-                    std::unordered_map<std::string, sdbus::Variant> parameters;
-                    std::ifstream config(file_path);
-                    std::string key, value;
-                    while (config >> key >> value)
-                    {
-                        parameters[key] = sdbus::Variant(value);
-                    }
-                    return parameters;
-                };
 
-                object->addVTable(sdbus::registerMethod("ChangeConfiguration")
-                    .implementedAs(std::move(ChangeConfiguration)),
-                    sdbus::registerMethod("GetConfiguration").implementedAs(std::move(GetConfiguration)),
-                    sdbus::registerSignal("configurationChanged")
-                    .withParameters<std::unordered_map<std::string, sdbus::Variant>>())
-                .forInterface("com.system.configurationManager.Application.Configuration");
-            }
+                    if (conf_key == key)
+                    {
+
+
+                        parameters[conf_key] = value;
+                        isUpdated = true;
+                        continue;
+                    }
+
+
+
+
+                    parameters[conf_key] = sdbus::Variant(conf_value);
+                }
+
+                if (!isUpdated)
+                    throw sdbus::Error(sdbus::Error::Name{
+                                           "org.freedesktop.DBus.Error.InvalidArgs"
+                                       },
+                                       "No such parameter in configuration");
+                config.close();
+
+                std::ofstream upd_config(file_path);
+                for (const auto& [key,value] : parameters)
+                {
+
+                    upd_config << key << " " << value.get<std::string>() <<
+                        "\n";
+                }
+                upd_config.close();
+
+
+                raw_pointer_to_object->emitSignal("configurationChanged")
+                      .onInterface(
+                          "com.system.configurationManager.Application.Configuration")
+                      .withArguments(parameters);
+            };
+
+
+            auto GetConfiguration = [file_path
+                ]()-> std::unordered_map<std::string, sdbus::Variant>
+            {
+                std::unordered_map<std::string, sdbus::Variant> parameters;
+                std::ifstream config(file_path);
+                std::string key, value;
+                while (config >> key >> value)
+                {
+                    parameters[key] = sdbus::Variant(value);
+                }
+                config.close();
+                return parameters;
+            };
+
+            std::cout << "done registering object: " << object->getObjectPath()
+                << '\n';
+            object->addVTable(sdbus::registerMethod("ChangeConfiguration")
+                              .implementedAs(std::move(ChangeConfiguration)),
+                              sdbus::registerMethod("GetConfiguration").
+                              implementedAs(std::move(GetConfiguration)),
+                              sdbus::registerSignal("configurationChanged")
+                              .withParameters<std::unordered_map<
+                                  std::string, sdbus::Variant>>())
+                  .forInterface(
+                      "com.system.configurationManager.Application.Configuration");
+            objects.push_back(std::move(object));
         }
     }
+    return objects;
 }
 
 void start_service()
 {
     sdbus::ServiceName service_name{"com.system.configurationManager"};
-    auto connection = sdbus::createSessionBusConnection(service_name);
+    auto connection = sdbus::createBusConnection(service_name);
+    std::cout << "Creating objects..." << "\n";
+    std::vector<std::unique_ptr<sdbus::IObject>> objects = create_objects(connection);
 
-    create_objects(connection);
+    std::cout << "Start listening connections...\n";
     connection->enterEventLoop();
 }

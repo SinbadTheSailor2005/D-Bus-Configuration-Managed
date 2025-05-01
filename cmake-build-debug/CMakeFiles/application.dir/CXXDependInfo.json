@@ -20,18 +20,18 @@
 	],
 	"language" : "CXX",
 	"linked-target-dirs" : [],
-	"module-dir" : "/home/aziz/Projects/D-bus/cmake-build-debug/CMakeFiles/service.dir",
+	"module-dir" : "/home/aziz/Projects/D-bus/cmake-build-debug/CMakeFiles/application.dir",
 	"sources" : 
 	{
-		"CMakeFiles/service.dir/src/service.cpp.o" : 
+		"CMakeFiles/application.dir/src/application.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/home/aziz/Projects/D-bus/src/service.cpp"
+			"source" : "/home/aziz/Projects/D-bus/src/application.cpp"
 		},
-		"CMakeFiles/service.dir/src/start_service.cpp.o" : 
+		"CMakeFiles/application.dir/src/start_app.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/home/aziz/Projects/D-bus/src/start_service.cpp"
+			"source" : "/home/aziz/Projects/D-bus/src/start_app.cpp"
 		}
 	}
 }

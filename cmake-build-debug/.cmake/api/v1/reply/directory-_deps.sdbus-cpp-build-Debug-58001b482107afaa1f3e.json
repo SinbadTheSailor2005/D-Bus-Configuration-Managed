@@ -57,7 +57,7 @@
 				"_deps/sdbus-cpp-build/libsdbus-c++.a"
 			],
 			"targetId" : "sdbus-c++::@6bd9f0b8c538a5853df2",
-			"targetIndex" : 0,
+			"targetIndex" : 1,
 			"type" : "target"
 		},
 		{
@@ -95,11 +95,11 @@
 			[
 				{
 					"id" : "sdbus-c++::@6bd9f0b8c538a5853df2",
-					"index" : 0
+					"index" : 1
 				},
 				{
 					"id" : "sdbus-c++-objlib::@6bd9f0b8c538a5853df2",
-					"index" : 1
+					"index" : 2
 				}
 			],
 			"paths" : 
