@@ -6,7 +6,7 @@
 ![IMAGE ALT TEXT](./images/example.png)
 ## Технологический стек
 - C++20
-- sdbus-c++
+- sdbus-c++ (high-level api)
 - cmake
 - bash scripts
 
@@ -17,7 +17,7 @@
 ```bash
 ./build.sh
 ```
-- в папке build появятся 2 бинарика: **service** и **applciation**
+- в папке **bin** появятся 2 бинарика: **service** и **applciation**
 - появится директория ~/com.system.configurationManager c конфиг файлом **confManagerApplication1**
 #### Примечание
 формат храния данных в файлах конфигураций выбран следующий:
@@ -95,7 +95,25 @@ gdbus call --session \
    "Timeout" "<'5000'>"
 
 ```
+
 Теперь сообщение должно выводиться каждые 5 секунд
+
+Получаем конфигурационный файл:
+```bash
+
+gdbus call --session --dest com.system.configurationManager \
+--object-path /com/system/configurationManager/Application/confManagerApplication1 \
+--method com.system.configurationManager.Application.Configuration.GetConfiguration
+
+```
+
+Посмотреть методы у объекта:
+```bash
+ gdbus introspect --session \
+  --dest com.system.configurationManager \
+  --object-path /com/system/configurationManager/Application/confManagerApplication1
+
+```
 ####  Примечание
 - Чтобы ввести тип Variant, нужно обернуть значение в <>.
 
@@ -103,7 +121,7 @@ gdbus call --session \
 ```bash
 "Timeout" "<'5000'>"
 ```
-- В документе с описание задания был использован
+- В документе с описанием задания был использован
 ```bash
 gdbus send ...
 ```
