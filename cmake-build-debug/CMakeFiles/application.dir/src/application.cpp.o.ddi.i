@@ -122970,38 +122970,65 @@ namespace sdbus {
 # 8 "/home/aziz/Projects/D-bus/src/application.cpp" 2
 void signal_handler(const std::unordered_map<std::string, sdbus::Variant>& parameters)
 {
+    std::cout << "<------------------------------------------------------->\n\n";
+    std::cout << "got the configureChanged signal\nNew updated config:\n";
+    for (const auto &[key,value] : parameters )
+    {
+
+        std::cout << key << ":" << value.get<std::string>() << "\n";
+    }
+    std::cout<<"\n\n";
+    std::cout << "<------------------------------------------------------->\n\n";
 
 }
 
 void start_application()
 {
-
     sdbus::ServiceName destination {"com.system.configurationManager"};
     sdbus::ObjectPath object_path {"/com/system/configurationManager/Application/confManagerApplication1"};
+
+
     auto proxy = sdbus::createProxy(std::move(destination), std::move(object_path));
     std:: cout << "Proxy created\n";
 
-    sdbus::InterfaceName interface {"com.system.configurationManager.Application.Configuration"};
-    proxy->uponSignal("configurationChanged").onInterface(interface)
-    .call([](const std::unordered_map<std::string, sdbus::Variant>&parameters)
-    {
-        signal_handler(parameters);
-    });
+
+    const sdbus::InterfaceName interface {"com.system.configurationManager.Application.Configuration"};
+
 
     std::unordered_map<std::string, sdbus::Variant> config_params;
 
-    proxy->callMethod("GetConfiguration")
-    .onInterface("com.system.configurationManager.Application.Configuration")
-    .storeResultsTo(config_params);
 
-    std::cout<<"iam here!\n";
+    proxy->uponSignal("configurationChanged").onInterface(interface)
+    .call([&proxy, &config_params](const std::unordered_map<std::string, sdbus::Variant>&parameters)
+    {
+
+        signal_handler(parameters);
+
+
+        config_params.clear();
+
+
+        proxy->callMethod("GetConfiguration")
+        .onInterface("com.system.configurationManager.Application.Configuration")
+        .storeResultsTo(config_params);
+    });
+
+
+
+    proxy->callMethod("GetConfiguration")
+           .onInterface("com.system.configurationManager.Application.Configuration")
+           .storeResultsTo(config_params);
     while (true)
     {
-        std::cout << "i am here!";
 
+
+        auto timeout = config_params["Timeout"].get<std::string>();
         auto phrase = config_params["TimeoutPhrase"].get<std::string>();
         sleep(1);
         std::cout << phrase << "\n";
+
+
+
     }
 
 }

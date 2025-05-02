@@ -127484,11 +127484,34 @@ namespace std __attribute__ ((__visibility__ ("default")))
 
 
 
-# 12 "/home/aziz/Projects/D-bus/src/service.cpp"
-std::vector<std::unique_ptr<sdbus::IObject>> create_objects(std::unique_ptr<sdbus::IConnection>& connection)
+
+# 13 "/home/aziz/Projects/D-bus/src/service.cpp"
+std::string convert_variant_to_string(const sdbus::Variant& value)
+{
+    if ("s" == value.peekValueType()) return value.get<std::string>();
+    if ("y" == value.peekValueType()) return std::to_string(value.get<uint8_t>());
+    if ("n" == value.peekValueType()) return std::to_string(value.get<int16_t>());
+    if ("i" == value.peekValueType()) return std::to_string(value.get<int32_t>());
+    if ("u" == value.peekValueType()) return std::to_string(value.get<uint32_t>());
+    if ("b" == value.peekValueType()) return value.get<bool>()? "true" : "false";
+    throw sdbus::Error(sdbus::Error::Name{
+                                          "org.freedesktop.DBus.Error.InvalidArgs"
+                                      },
+                                      "The value type is unsupported!");
+}
+
+void split_string(const std::string& line, std::string& key, std::string& value,const std::string& delimeter)
+{
+    auto delimeter_ind = line.find(delimeter);
+    key = line.substr(0, delimeter_ind);
+    value = line.substr((delimeter_ind) + 1, line.length());
+}
+
+std::vector<std::unique_ptr<sdbus::IObject>> create_objects(
+    const std::unique_ptr<sdbus::IConnection>& connection)
 {
 
-    std::vector<std::unique_ptr<sdbus::IObject>>objects;
+    std::vector<std::unique_ptr<sdbus::IObject>> objects;
 
 
     const std::filesystem::path dir_path = std::getenv("HOME")
@@ -127506,10 +127529,13 @@ std::vector<std::unique_ptr<sdbus::IObject>> create_objects(std::unique_ptr<sdbu
     for (const auto& entry : std::filesystem::directory_iterator(dir_path))
     {
         if (entry.is_regular_file())
+
         {
 
             std::string file_path = entry.path().string();
-            std::string filename = entry.path().filename().string();
+            std::string full_filename = entry.path().filename().string();
+            std::string extension, filename;
+            split_string(full_filename,filename,extension,".");
             std::cout << "examine file: " << filename << '\n';
 
 
@@ -127519,11 +127545,20 @@ std::vector<std::unique_ptr<sdbus::IObject>> create_objects(std::unique_ptr<sdbu
             auto object = sdbus::createObject(
                 *connection, std::move(object_path));
 
+
+
+
+
+
+
             auto raw_pointer_to_object = object.get();
 
+
+
             auto ChangeConfiguration = [raw_pointer_to_object, file_path](
-                std::string key, sdbus::Variant value)
+                 std::string key, sdbus::Variant value) -> void
             {
+
                 std::unordered_map<std::string, sdbus::Variant> parameters;
                 std::ifstream config(file_path);
                 if (!config.is_open())
@@ -127531,24 +127566,22 @@ std::vector<std::unique_ptr<sdbus::IObject>> create_objects(std::unique_ptr<sdbu
                     throw std::runtime_error("Could not open the file");
                 }
 
+                std::string conf_key, conf_value, line;
 
-
-                std::string conf_key, conf_value;
                 bool isUpdated = false;
 
-                while (config >> conf_key >> conf_value)
+                while (std::getline(config, line))
                 {
+
+                    split_string(line, conf_key, conf_value, ":");
+
 
                     if (conf_key == key)
                     {
-
-
                         parameters[conf_key] = value;
                         isUpdated = true;
                         continue;
                     }
-
-
 
 
                     parameters[conf_key] = sdbus::Variant(conf_value);
@@ -127565,34 +127598,38 @@ std::vector<std::unique_ptr<sdbus::IObject>> create_objects(std::unique_ptr<sdbu
                 for (const auto& [key,value] : parameters)
                 {
 
-                    upd_config << key << " " << value.get<std::string>() <<
+                    upd_config << key << ":" << value.get<std::string>() <<
                         "\n";
                 }
                 upd_config.close();
 
 
                 raw_pointer_to_object->emitSignal("configurationChanged")
-                      .onInterface(
-                          "com.system.configurationManager.Application.Configuration")
-                      .withArguments(parameters);
+                                     .onInterface(
+                                         "com.system.configurationManager.Application.Configuration")
+                                     .withArguments(parameters);
             };
 
 
             auto GetConfiguration = [file_path
                 ]()-> std::unordered_map<std::string, sdbus::Variant>
             {
+
                 std::unordered_map<std::string, sdbus::Variant> parameters;
+
+
                 std::ifstream config(file_path);
-                std::string key, value;
-                while (config >> key >> value)
+                std::string key, line,value;
+                while (std::getline(config,line))
                 {
+                    split_string(line, key, value,":");
                     parameters[key] = sdbus::Variant(value);
                 }
                 config.close();
                 return parameters;
             };
 
-            std::cout << "done registering object: " << object->getObjectPath()
+            std::cout << "done registering methods and signals for : " << object->getObjectPath()
                 << '\n';
             object->addVTable(sdbus::registerMethod("ChangeConfiguration")
                               .implementedAs(std::move(ChangeConfiguration)),
@@ -127611,11 +127648,16 @@ std::vector<std::unique_ptr<sdbus::IObject>> create_objects(std::unique_ptr<sdbu
 
 void start_service()
 {
+
     sdbus::ServiceName service_name{"com.system.configurationManager"};
-    auto connection = sdbus::createBusConnection(service_name);
+    auto connection = sdbus::createSessionBusConnection(service_name);
+
     std::cout << "Creating objects..." << "\n";
-    std::vector<std::unique_ptr<sdbus::IObject>> objects = create_objects(connection);
+
+    std::vector<std::unique_ptr<sdbus::IObject>> objects = create_objects(
+        connection);
 
     std::cout << "Start listening connections...\n";
+
     connection->enterEventLoop();
 }

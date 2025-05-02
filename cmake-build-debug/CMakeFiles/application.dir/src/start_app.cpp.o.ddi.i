@@ -9,10 +9,11 @@
 
 
 
+
 # 1 "/home/aziz/Projects/D-bus/include/application.h" 1
 # 10 "/home/aziz/Projects/D-bus/include/application.h"
 void start_application();
-# 6 "/home/aziz/Projects/D-bus/src/start_app.cpp" 2
+# 7 "/home/aziz/Projects/D-bus/src/start_app.cpp" 2
 
 
 int main ()
@@ -20,4 +21,5 @@ int main ()
 
     start_application();
     return 0;
+
 }
