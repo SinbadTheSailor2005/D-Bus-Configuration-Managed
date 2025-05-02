@@ -122968,6 +122968,8 @@ namespace sdbus {
 }
 # 33 "/home/aziz/Projects/D-bus/cmake-build-debug/_deps/sdbus-cpp-src/include/sdbus-c++/sdbus-c++.h" 2
 # 8 "/home/aziz/Projects/D-bus/src/application.cpp" 2
+
+
 void signal_handler(const std::unordered_map<std::string, sdbus::Variant>& parameters)
 {
     std::cout << "<------------------------------------------------------->\n\n";
@@ -123024,7 +123026,7 @@ void start_application()
 
         auto timeout = config_params["Timeout"].get<std::string>();
         auto phrase = config_params["TimeoutPhrase"].get<std::string>();
-        sleep(1);
+        std::this_thread::sleep_for(std::chrono::milliseconds(std::stoi(timeout)));
         std::cout << phrase << "\n";
 
 

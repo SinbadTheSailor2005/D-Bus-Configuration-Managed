@@ -127500,6 +127500,8 @@ std::string convert_variant_to_string(const sdbus::Variant& value)
                                       "The value type is unsupported!");
 }
 
+
+
 void split_string(const std::string& line, std::string& key, std::string& value,const std::string& delimeter)
 {
     auto delimeter_ind = line.find(delimeter);
@@ -127522,7 +127524,6 @@ std::vector<std::unique_ptr<sdbus::IObject>> create_objects(
     {
         throw std::runtime_error("No such file or directory");
     }
-    std::cout << "determine path: " << dir_path.string() << '\n';
 
 
 
@@ -127618,6 +127619,7 @@ std::vector<std::unique_ptr<sdbus::IObject>> create_objects(
                 std::unordered_map<std::string, sdbus::Variant> parameters;
 
 
+
                 std::ifstream config(file_path);
                 std::string key, line,value;
                 while (std::getline(config,line))
@@ -127626,10 +127628,12 @@ std::vector<std::unique_ptr<sdbus::IObject>> create_objects(
                     parameters[key] = sdbus::Variant(value);
                 }
                 config.close();
+
+
                 return parameters;
             };
 
-            std::cout << "done registering methods and signals for : " << object->getObjectPath()
+            std::cout << "done registering methods and signals for object " << object->getObjectPath()
                 << '\n';
             object->addVTable(sdbus::registerMethod("ChangeConfiguration")
                               .implementedAs(std::move(ChangeConfiguration)),

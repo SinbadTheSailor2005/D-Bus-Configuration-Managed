@@ -40,7 +40,6 @@ void split_string(const std::string &line, std::string &key, std::string &value,
 
 std::vector<std::unique_ptr<sdbus::IObject>>
 create_objects(const std::unique_ptr<sdbus::IConnection> &connection) {
-
   // вектор указателей на sdbus объекты, которые будут созданы и возвращены
   std::vector<std::unique_ptr<sdbus::IObject>> objects;
 
@@ -75,9 +74,7 @@ create_objects(const std::unique_ptr<sdbus::IConnection> &connection) {
       // Eго мы передадим в лямбда функцию, тк
       // unique pointer будет перемещен в вектор objects
       // (тк после выхода из for цикла все созданные объекты удалятся, и мы
-      // должны их сохранить) и обратится к объекту будет невозможно по нему. тк
-      // все unqique pointers доживают до конца программы, утечек памяти не
-      // будет!
+      // должны их сохранить) и обратится к объекту, будет невозможно по нему
       auto raw_pointer_to_object = object.get();
 
       // *** создаем метод ChangeConfiguration ***
@@ -182,6 +179,6 @@ void start_service() {
       create_objects(connection);
 
   std::cout << "Start listening connections...\n";
-  // запускаем I/O цикл на шине
+  // запускаем прием запросов
   connection->enterEventLoop();
 }
