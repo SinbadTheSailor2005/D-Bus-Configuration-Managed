@@ -7,7 +7,7 @@
 ## Технологический стек
 - C++20
 - sdbus-c++ (high-level api)
-- cmake
+- cmake(3.28+)
 - bash scripts
 
 
