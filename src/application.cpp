@@ -59,10 +59,21 @@ void start_application() {
   proxy->callMethod("GetConfiguration")
       .onInterface("com.system.configurationManager.Application.Configuration")
       .storeResultsTo(config_params);
-  while (true) {
-    auto timeout = config_params["Timeout"].get<std::string>();
-    auto phrase = config_params["TimeoutPhrase"].get<std::string>();
-    std::this_thread::sleep_for(std::chrono::milliseconds(std::stoi(timeout)));
-    std::cout << phrase << "\n";
+  while (true)
+  {
+      try {
+          auto timeout = config_params["Timeout"].get<std::string>();
+          auto phrase = config_params["TimeoutPhrase"].get<std::string>();
+          std::this_thread::sleep_for(std::chrono::milliseconds(std::stoi(timeout)));
+          std::cout << phrase << "\n";
+      }catch (std::invalid_argument& e){
+
+          // если параметр неправильного типа
+          // например, Timeout:abc5000
+          // выводим ошибку и ждем 5 секунд
+          std::cout <<"ERROR during showing configuration file: " <<e.what() << "\n";
+          std::cout << "waiting 5 seconds for repeat the process...\n";
+          std::this_thread::sleep_for(std::chrono::seconds(5));
+      }
   }
 }
