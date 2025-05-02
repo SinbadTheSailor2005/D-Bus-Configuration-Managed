@@ -4,7 +4,4 @@
 
 #include "service.h"
 
-int main()
-{
-    start_service();
-}
+int main() { start_service(); }
