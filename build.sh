@@ -1,7 +1,7 @@
 #!/bin/bash
 # если нет директории - создаем
 source_path=$(pwd)
-if [ ! -d $HOME/con.system.configurationManager ]; then
+if [ ! -d $HOME/com.system.configurationManager ]; then
 mkdir $HOME/com.system.configurationManager
 fi
 
