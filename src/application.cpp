@@ -36,15 +36,14 @@ void start_application() {
   // словарь с нашей текущей конфигурацией
   std::unordered_map<std::string, sdbus::Variant> config_params;
 
+  std::string timeout;
+  std::string phrase;
   // подписываемся на сигнал
   proxy->uponSignal("configurationChanged")
       .onInterface(interface)
-      .call([&proxy, &config_params](
-                const std::unordered_map<std::string, sdbus::Variant>
-                    &parameters) {
-        // вызываем обработчик сигнала
-        signal_handler(parameters);
-
+      .call([&proxy, &config_params, &timeout,
+             &phrase](const std::unordered_map<std::string, sdbus::Variant>
+                          &parameters) {
         // очищаем предыдущий сохраненный конфиг
         config_params.clear();
 
@@ -53,27 +52,36 @@ void start_application() {
             .onInterface(
                 "com.system.configurationManager.Application.Configuration")
             .storeResultsTo(config_params);
+
+        // обновляем в обработчике
+        // тк во время sleep программа может
+        // не обновить phrase и вывести старое значение
+        timeout = config_params["Timeout"].get<std::string>();
+        phrase = config_params["TimeoutPhrase"].get<std::string>();
+        // вызываем обработчик сигнала
+        signal_handler(parameters);
       });
 
   // получаем текущую конфигурацию приложения
   proxy->callMethod("GetConfiguration")
       .onInterface("com.system.configurationManager.Application.Configuration")
       .storeResultsTo(config_params);
-  while (true)
-  {
-      try {
-          auto timeout = config_params["Timeout"].get<std::string>();
-          auto phrase = config_params["TimeoutPhrase"].get<std::string>();
-          std::this_thread::sleep_for(std::chrono::milliseconds(std::stoi(timeout)));
-          std::cout << phrase << "\n";
-      }catch (std::invalid_argument& e){
+  while (true) {
+    try {
+      timeout = config_params["Timeout"].get<std::string>();
+      phrase = config_params["TimeoutPhrase"].get<std::string>();
+      std::this_thread::sleep_for(
+          std::chrono::milliseconds(std::stoi(timeout)));
+      std::cout << phrase << "\n";
+    } catch (std::invalid_argument &e) {
 
-          // если параметр неправильного типа
-          // например, Timeout:abc5000
-          // выводим ошибку и ждем 5 секунд
-          std::cout <<"ERROR during showing configuration file: " <<e.what() << "\n";
-          std::cout << "waiting 5 seconds for repeat the process...\n";
-          std::this_thread::sleep_for(std::chrono::seconds(5));
-      }
+      // если параметр неправильного типа
+      // например, Timeout:abc5000
+      // выводим ошибку и ждем 5 секунд
+      std::cout << "ERROR during showing configuration file: " << e.what()
+                << "\n";
+      std::cout << "waiting 5 seconds for repeat the process...\n";
+      std::this_thread::sleep_for(std::chrono::seconds(5));
+    }
   }
 }
